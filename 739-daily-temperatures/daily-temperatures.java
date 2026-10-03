@@ -17,7 +17,6 @@ class Solution {
               arr[i]=st.peek()-i;
             }
             st.push(i);
-            System.out.println(st.peek());
         }
         return arr;
     }
