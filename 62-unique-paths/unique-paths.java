@@ -9,7 +9,7 @@ class Solution {
         return memo[k][l];
     }
     public int uniquePaths(int m, int n) {
-        int memo[][] = new int[m][n];
+        int memo[][] = new int[m+1][n+1];
         for(int i =0 ;i<memo.length;i++)
         {
             Arrays.fill(memo[i],-1);
