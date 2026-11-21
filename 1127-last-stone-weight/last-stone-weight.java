@@ -5,11 +5,6 @@ class Solution {
         return stones[0];
         }
         Arrays.sort(stones);
-        for(int k =0 ;k<stones.length;k++)
-           {
-            System.out.print(stones[k]);
-           }
-           System.out.println();
         int i=stones.length-1;
         int j=stones.length-2;
         while(stones[j]!=0)
@@ -26,11 +21,6 @@ class Solution {
             
            }
            Arrays.sort(stones);
-           for(int k =0 ;k<stones.length;k++)
-           {
-            System.out.print(stones[k]);
-           }
-           System.out.println();
         }
         if(stones[i]==0)
         return 0;
