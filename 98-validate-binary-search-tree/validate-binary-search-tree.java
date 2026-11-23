@@ -1,20 +1,29 @@
 class Solution {
+
     public boolean isValidBST(TreeNode root) {
-        return validate(root, null, null);
+
+        List<Integer> list = new ArrayList<>();
+
+        inorder(root, list);
+
+        for(int i = 0; i < list.size() - 1; i++) {
+
+            if(list.get(i) >= list.get(i + 1))
+                return false;
+        }
+
+        return true;
     }
 
-    private boolean validate(TreeNode node, Integer min, Integer max) {
-        if (node == null) {
-            return true;
-        }
+    private void inorder(TreeNode root, List<Integer> list) {
 
-        // Check if current node breaks the allowed (min, max) range
-        if ((min != null && node.val <= min) || (max != null && node.val >= max)) {
-            return false;
-        }
+        if(root == null)
+            return;
 
-        // Left child must be < node.val | Right child must be > node.val
-        return validate(node.left, min, node.val) && 
-               validate(node.right, node.val, max);
+        inorder(root.left, list);
+
+        list.add(root.val);
+
+        inorder(root.right, list);
     }
 }
