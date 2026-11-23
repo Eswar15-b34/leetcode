@@ -1,18 +1,20 @@
 class Solution {
-    private TreeNode prev = null;
-
     public boolean isValidBST(TreeNode root) {
-        if (root == null)
+        return validate(root, null, null);
+    }
+
+    private boolean validate(TreeNode node, Integer min, Integer max) {
+        if (node == null) {
             return true;
+        }
 
-        if (!isValidBST(root.left))
+        // Check if current node breaks the allowed (min, max) range
+        if ((min != null && node.val <= min) || (max != null && node.val >= max)) {
             return false;
+        }
 
-        if (prev != null && root.val <= prev.val)
-            return false;
-
-        prev = root;
-
-        return isValidBST(root.right);
+        // Left child must be < node.val | Right child must be > node.val
+        return validate(node.left, min, node.val) && 
+               validate(node.right, node.val, max);
     }
 }
